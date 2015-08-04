@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+
+public class testing {
+
+
+	public static void main(String[] args)
+	{
+		String test;
+		Ville[] tableau = new Ville[6];
+		String[] tab= {"Paris","Marseille","londres","Lisbonne","Madrid","Barcelone"};
+		int[] tab2={1234,56,72,38,47,50};
+		int i;
+		for  (i=0; i<6;i++)
+		{
+			if(i<3)
+		{
+			Ville V = new Ville(tab[i], "France", tab2[i]);
+			tableau[i]=V;
+			System.out.println("\n i="+i+" et on a"+tableau[i].description()+"\n");
+			
+			
+		}
+		else 
+		{
+			Capitale V = new Capitale(tab[i], "France", tab2[i], "Hollande");
+			tableau[i]=V;
+			
+		}
+		}
+		System.out.println("on recapitule");
+		for (Ville v:tableau)
+		{
+			System.out.println(v.description()+"\n");
+		}
+			
+	}
+	
+}
+
+

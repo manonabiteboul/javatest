@@ -1,0 +1,133 @@
+
+
+public class Ville {
+	protected String nomVille;
+	protected String nomPays;
+	protected int nbreHabitant;
+	protected char category;
+	protected static int instance=0;
+	protected static int instanceBis=0;
+	
+	public Ville(){
+		System.out.println("Création d'une ville !");
+		instance++;
+		instanceBis++;
+		nomVille = "Inconnu";
+		nomPays = "Inconnu";
+		nbreHabitant = 0;
+		this.setCategory();
+		
+	}
+	
+	public Ville(String nm, String p, int h){
+		instance++;
+		instanceBis++;
+		System.out.println("Création d'une ville avec paramettres!");
+		nomVille = nm;
+		nomPays = p;
+		nbreHabitant = h;
+		this.setCategory();
+		System.out.println("on est a "+ nomVille+"dans"+nomPays+"avec"+nbreHabitant);
+	}
+	
+	public static int getInstanceBis()
+	{
+		return instanceBis;
+	}
+	
+	public String getNom()
+	{
+		return nomVille;
+	}
+
+	public String getPays()
+	{
+		return nomPays;
+	}
+	public int getHabitant()
+	{
+		return nbreHabitant;
+	}
+	
+	public char getCategory()
+	{
+		return category;
+	}
+
+	public void setNom(String v)
+	{
+		 nomVille=v;
+	}
+
+	public void setPays(String p)
+	{
+		 nomPays=p;
+	}
+	public void setHabitant(int h)
+	{
+		 nbreHabitant=h;
+		 this.setCategory();
+	}
+	
+	public void setCategory()
+	{
+		int bornesSuperieures[] = {0, 1000, 10000, 100000, 500000, 1000000, 5000000,10000000};
+		char categories[]={'A','B','C','D','E','F'};
+		int i=0;
+		while (i < bornesSuperieures.length && this.nbreHabitant >= bornesSuperieures[i])
+				i++;
+		this.category=categories[i];
+			
+	}
+	
+	public String description()
+	{
+		return "La ville "+this.nomVille+" est une ville de " + this.nomPays + "elle a "+this.nbreHabitant + " habitants et et est de category "+this.category;
+	}
+	public String comparer(Ville v1)
+	{
+		String reponse= new String();
+		if (v1.getHabitant()>this.getHabitant())
+			reponse = "La ville "+ v1.getNom()+"a plus d'habitant que"+this.getNom();
+		else
+			reponse = "La ville "+ v1.getNom()+"a plus d'habitant que"+this.getNom();
+		return reponse;
+	}
+	
+}
+
+class Capitale extends Ville {
+	private String president;
+	public Capitale(){
+	super();
+	president="aucun";
+	}
+	
+	public Capitale(String nm, String pa, int h, String pres){
+		super(nm,pa,h);
+		System.out.println("on a cree une capitale initialise");
+		president=pres;
+		
+		this.setCategory();
+		
+	}
+	public String description()
+	{
+		String str=super.description() + " et le president est " + this.president;
+				return str;
+	}
+	public String getPresident()
+	{
+		return president;
+	}
+	
+	public void setPresident(String pres)
+	{
+		this.president=pres;
+		
+	}
+	
+}
+
+
+

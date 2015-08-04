@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+
+public class testing {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		double a,b,p,test,r,s,t;
+		double j=0;
+		char reponse='N';
+		char re='O';
+		test=-3;
+		p=0;
+		a=0;
+		b=0;
+		Scanner sc = new Scanner(System.in);
+		while(re=='O')
+		{
+			test=-3;
+			p=0;
+			a=0;
+			b=0;
+			reponse='N';
+			while(test<0 || test<p)
+			{
+			
+				System.out.println("A partir de ");
+				a=sc.nextDouble();
+				System.out.println("Jusqu'a");
+				b=sc.nextDouble();
+				System.out.println("Par pas de");
+				p=sc.nextDouble();
+				sc.nextLine();
+				System.out.println("En resume on pars de "+a+" juqu'a "+b+"avec un pas de "+p);
+				test=b-a;
+				if(test<0 || test<p)
+					System.out.println("Traitement impossible ");
+			}
+			
+			while(reponse!='O')
+			{
+				
+				System.out.println("Etes vous pret ?(O/N)");
+				//On récupère la réponse de l'utilisateur
+				reponse = sc.nextLine().charAt(0);
+			}
+			j=a;
+			System.out.println("Celcius Farenheit");
+			r=9.0/5.0;
+			s=32.0;
+			while(j<b)
+			{
+				t=r*j+s;
+			
+				System.out.println(j + " " +t);
+				j=j+p;
+			}
+			System.out.println("On recommence ?(O/N)");
+			//On récupère la réponse de l'utilisateur
+			re = sc.nextLine().charAt(0);
+		}
+		System.out.println("done ");
+		}
+
+	}
